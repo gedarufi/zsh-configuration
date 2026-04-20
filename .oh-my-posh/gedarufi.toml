@@ -3,11 +3,32 @@ console_title_template = "{{ .Shell }} in {{ .Folder }}"
 final_space = true
 version = 4
 
+[palette]
+main-bg = "#24283b"
+dark-bg = "#1a1b26"
+terminal-red = "#f7768e"
+pistachio-green = "#9ece6a"
+terminal-green = "#73daca"
+terminal-yellow = "#e0af68"
+terminal-blue = "#7aa2f7"
+terminal-inger = "#00adef"
+celeste-blue = "#b4f9f8"
+light-sky-blue = "#7dcfff"
+terminal-white = "#c0caf5"
+white-blue = "#a9b1d6"
+blue-bell = "#9aa5ce"
+pastal-grey = "#cfc9c2"
+terminal-magenta = "#bb9af7"
+terminal-orange = "#ff9e64"
+blue-black = "#565f89"
+terminal-black = "#414868"
+t-background = "p:main-bg"
+
 [transient_prompt]
 background = "transparent"
 foreground_templates = [
-  "{{if gt .Code 0}}red{{end}}",
-  "{{if eq .Code 0}}magenta{{end}}",
+  "{{if gt .Code 0}}p:terminal-red{{end}}",
+  "{{if eq .Code 0}}p:terminal-magenta{{end}}",
 ]
 template = "{{if .Root}}\u26a1 {{end}}❯ "
 
@@ -16,8 +37,8 @@ alignment = "left"
 type = "prompt"
 
   [[blocks.segments]]
-  background = "#00adef"
-  foreground = "#1a1b26"
+  background = "p:terminal-inger"
+  foreground = "p:dark-bg"
   style = "powerline"
   template = " {{ if .WSL }}WSL at {{ end }}{{.Icon}}"
   type = "os"
@@ -26,16 +47,16 @@ type = "prompt"
     windows = "\uf179"
 
   [[blocks.segments]]
-  background = "#00adef"
-  foreground = "#1a1b26"
+  background = "p:terminal-inger"
+  foreground = "p:dark-bg"
   powerline_symbol = "\ue0b0"
   style = "powerline"
   template = "{{ .UserName }} "
   type = "session"
 
   [[blocks.segments]]
-  background = "#24283b"
-  foreground = "#a9b1d6"
+  background = "p:main-bg"
+  foreground = "p:white-blue"
   powerline_symbol = "\ue0b0"
   style = "powerline"
   template = " \ue5ff {{ .Path }} "
@@ -45,14 +66,14 @@ type = "prompt"
     folder_separator_icon = "/"
 
   [[blocks.segments]]
-  background = "#9ece6a"
+  background = "p:pistachio-green"
   background_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}#ff9e64{{ end }}",
-    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f7768e{{ end }}",
-    "{{ if gt .Ahead 0 }}#7dcfff{{ end }}",
-    "{{ if gt .Behind 0 }}#ff9e64{{ end }}"
+    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:terminal-orange{{ end }}",
+    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:terminal-red{{ end }}",
+    "{{ if gt .Ahead 0 }}p:light-sky-blue{{ end }}",
+    "{{ if gt .Behind 0 }}p:terminal-orange{{ end }}"
   ]
-  foreground = "#1a1b26"
+  foreground = "p:dark-bg"
   powerline_symbol = "\ue0b0"
   style = "powerline"
   template = " {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
@@ -62,11 +83,11 @@ type = "prompt"
     fetch_status = true
 
   [[blocks.segments]]
-  background = "#73daca"
+  background = "p:terminal-green"
   background_templates = [
-    "{{ if gt .Code 0 }}#f7768e{{ end }}"
+    "{{ if gt .Code 0 }}p:terminal-red{{ end }}"
   ]
-  foreground = "#1a1b26"
+  foreground = "p:dark-bg"
   powerline_symbol = "\ue0b0"
   style = "powerline"
   template = " \uea6c "
@@ -80,13 +101,13 @@ alignment = "right"
 type = "prompt"
 
   [[blocks.segments]]
-  background = "#f7768e"
+  background = "p:terminal-red"
   background_templates = [
-    "{{if eq \"Charging\" .State.String}}#9ece6a{{end}}",
-    "{{if eq \"Discharging\" .State.String}}#e0af68{{end}}",
-    "{{if eq \"Full\" .State.String}}#7aa2f7{{end}}"
+    "{{if eq \"Charging\" .State.String}}p:pistachio-green{{end}}",
+    "{{if eq \"Discharging\" .State.String}}p:terminal-yellow{{end}}",
+    "{{if eq \"Full\" .State.String}}p:terminal-blue{{end}}"
   ]
-  foreground = "#1a1b26"
+  foreground = "p:dark-bg"
   invert_powerline = true
   powerline_symbol = "\ue0b2"
   style = "powerline"
@@ -94,25 +115,48 @@ type = "prompt"
   type = "battery"
 
   [[blocks.segments]]
-  background = "#7aa2f7"
-  foreground = "#1a1b26"
-  invert_powerline = true
-  powerline_symbol = "\ue0b2"
-  style = "powerline"
-  template = " \ue235 {{ .Venv }} "
-  type = "python"
-
-    [blocks.segments.options]
-    display_mode = "context"
-    fetch_virtual_env = true
+  type = "node"
+  style = "plain"
+  foreground = "p:pistachio-green"
+  template = "\ue718 {{ .Full }} "
 
   [[blocks.segments]]
-  background = "#24283b"
-  foreground = "#a9b1d6"
+  type = "php"
+  style = "plain"
+  foreground = "p:terminal-blue"
+  template = "\ue73d {{ .Full }} "
+
+  [[blocks.segments]]
+  type = "python"
+  style = "plain"
+  foreground = "p:terminal-yellow"
+  template = "\uE235 {{ .Full }}"
+
+  [[blocks.segments]]
+  type = "julia"
+  style = "plain"
+  foreground = "p:terminal-magenta"
+  template = "\uE624 {{ .Full }}"
+
+  [[blocks.segments]]
+  type = "ruby"
+  style = "plain"
+  foreground = "p:terminal-red"
+  template = "\uE791 {{ .Full}}"
+
+  [[blocks.segments]]
+  type = "go"
+  style = "plain"
+  foreground = "p:light-sky-blue"
+  template = "\uFCD1 {{ .Full}}"
+
+  [[blocks.segments]]
+  background = "p:main-bg"
+  foreground = "p:white-blue"
   invert_powerline = true
   powerline_symbol = "\ue0b2"
   style = "powerline"
-  template = "<#a9b1d6> \ue641 </>{{ .CurrentDate | date .Format }} "
+  template = "<p:white-blue> \ue641 </>{{ .CurrentDate | date .Format }} "
   type = "time"
 
 [[blocks]]
@@ -121,17 +165,17 @@ newline = true
 type = "prompt"
 
   [[blocks.segments]]
-  foreground = "#e0af68"
+  foreground = "p:terminal-yellow"
   style = "plain"
   template = " \u26a1 "
   type = "root"
 
   [[blocks.segments]]
-    type = 'text'
-    style = 'plain'
-    foreground_templates = [
-      "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}magenta{{end}}",
-    ]
-    background = 'transparent'
-    template = '❯'
+  type = "text"
+  style = "plain"
+  foreground_templates = [
+    "{{if gt .Code 0}}p:terminal-red{{end}}",
+    "{{if eq .Code 0}}p:terminal-magenta{{end}}",
+  ]
+  background = "transparent"
+  template = "❯"
