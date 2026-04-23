@@ -1,3 +1,5 @@
+# ~/.config/oh-my-posh/gedarufi.toml
+
 "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
 console_title_template = "{{ .Shell }} in {{ .Folder }}"
 final_space = true

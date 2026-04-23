@@ -36,9 +36,6 @@ autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
@@ -133,5 +130,5 @@ export PATH="$PATH:/Users/gedarufi/.lmstudio/bin"
 
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config ~/.oh-my-posh/gedarufi.toml)"
+  eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/gedarufi.toml)"
 fi
