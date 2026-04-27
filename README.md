@@ -11,7 +11,7 @@ This repository provides a complete, integrated terminal setup featuring:
 - **Zsh** - Advanced shell with plugins via Zinit (syntax highlighting, completions, auto-suggestions, fzf-tab)
 - **Ghostty** - A modern terminal emulator with Tokyo Night theme
 - **Oh My Posh** - Custom prompt theme for a visually rich shell experience
-- **Tmux** - Terminal multiplexer for session management and productivity
+- **Tmux** - Terminal multiplexer with 12+ plugins, tmux2k theme, FZF integration, and session persistence
 
 Each component is configured to work seamlessly together, creating a polished and productive development environment.
 

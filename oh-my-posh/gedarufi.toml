@@ -14,6 +14,7 @@ terminal-green = "#73daca"
 terminal-yellow = "#e0af68"
 terminal-blue = "#7aa2f7"
 terminal-inger = "#00adef"
+terminal-inger2 = "#70D7FF"
 celeste-blue = "#b4f9f8"
 light-sky-blue = "#7dcfff"
 terminal-white = "#c0caf5"
@@ -40,49 +41,35 @@ type = "prompt"
 
   [[blocks.segments]]
   background = "p:terminal-inger"
-  foreground = "p:dark-bg"
+  foreground = "p:terminal-white"
   style = "powerline"
-  template = " {{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+  template = " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
   type = "os"
 
     [blocks.segments.options]
     windows = "\uf179"
 
   [[blocks.segments]]
-  background = "p:terminal-inger"
+  background = "p:terminal-inger2"
   foreground = "p:dark-bg"
   powerline_symbol = "\ue0b0"
   style = "powerline"
-  template = "{{ .UserName }} "
+  template = " {{ .UserName }} "
   type = "session"
 
   [[blocks.segments]]
   background = "p:main-bg"
-  foreground = "p:white-blue"
+  foreground = "p:terminal-inger2"
   powerline_symbol = "\ue0b0"
   style = "powerline"
-  template = " \ue5ff {{ .Path }} "
+  template = " {{ .Path }} "
   type = "path"
 
     [blocks.segments.options]
-    folder_separator_icon = "/"
-
-  [[blocks.segments]]
-  background = "p:pistachio-green"
-  background_templates = [
-    "{{ if or (.Working.Changed) (.Staging.Changed) }}p:terminal-orange{{ end }}",
-    "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:terminal-red{{ end }}",
-    "{{ if gt .Ahead 0 }}p:light-sky-blue{{ end }}",
-    "{{ if gt .Behind 0 }}p:terminal-orange{{ end }}"
-  ]
-  foreground = "p:dark-bg"
-  powerline_symbol = "\ue0b0"
-  style = "powerline"
-  template = " {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
-  type = "git"
-
-    [blocks.segments.options]
-    fetch_status = true
+    folder_icon = "\uf115"
+    folder_separator_icon = " \ue0b1 "
+    home_icon = "\ueb06"
+    style = "full"
 
   [[blocks.segments]]
   background = "p:terminal-green"
@@ -92,74 +79,11 @@ type = "prompt"
   foreground = "p:dark-bg"
   powerline_symbol = "\ue0b0"
   style = "powerline"
-  template = " \uea6c "
+  template = "{{ if gt .Code 0 }}  {{ end }}{{ if eq .Code 0 }}  {{ end }}"
   type = "status"
 
     [blocks.segments.options]
     always_enabled = true
-
-[[blocks]]
-alignment = "right"
-type = "prompt"
-
-  [[blocks.segments]]
-  background = "p:terminal-red"
-  background_templates = [
-    "{{if eq \"Charging\" .State.String}}p:pistachio-green{{end}}",
-    "{{if eq \"Discharging\" .State.String}}p:terminal-yellow{{end}}",
-    "{{if eq \"Full\" .State.String}}p:terminal-blue{{end}}"
-  ]
-  foreground = "p:dark-bg"
-  invert_powerline = true
-  powerline_symbol = "\ue0b2"
-  style = "powerline"
-  template = " {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}\uf295 \ueb2d "
-  type = "battery"
-
-  [[blocks.segments]]
-  type = "node"
-  style = "plain"
-  foreground = "p:pistachio-green"
-  template = "\ue718 {{ .Full }} "
-
-  [[blocks.segments]]
-  type = "php"
-  style = "plain"
-  foreground = "p:terminal-blue"
-  template = "\ue73d {{ .Full }} "
-
-  [[blocks.segments]]
-  type = "python"
-  style = "plain"
-  foreground = "p:terminal-yellow"
-  template = "\uE235 {{ .Full }}"
-
-  [[blocks.segments]]
-  type = "julia"
-  style = "plain"
-  foreground = "p:terminal-magenta"
-  template = "\uE624 {{ .Full }}"
-
-  [[blocks.segments]]
-  type = "ruby"
-  style = "plain"
-  foreground = "p:terminal-red"
-  template = "\uE791 {{ .Full}}"
-
-  [[blocks.segments]]
-  type = "go"
-  style = "plain"
-  foreground = "p:light-sky-blue"
-  template = "\uFCD1 {{ .Full}}"
-
-  [[blocks.segments]]
-  background = "p:main-bg"
-  foreground = "p:white-blue"
-  invert_powerline = true
-  powerline_symbol = "\ue0b2"
-  style = "powerline"
-  template = "<p:white-blue> \ue641 </>{{ .CurrentDate | date .Format }} "
-  type = "time"
 
 [[blocks]]
 alignment = "left"

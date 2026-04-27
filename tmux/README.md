@@ -11,14 +11,19 @@ Tmux enables:
 - **Terminal Multiplexing** - Run multiple programs in parallel without context switching
 - **Productivity Features** - FZF integration, URL handling, copy/paste enhancements
 - **Plugin Ecosystem** - Extend functionality with community-maintained plugins
-- **Beautiful UI** - Catppuccin theme with informative status bar
+- **Beautiful UI** - tmux2k Tokyo Night Storm theme with informative status bar
 
 This configuration includes:
-- 10+ curated plugins for enhanced functionality
-- FZF integration for command and URL handling
-- Tmux Resurrect for session persistence
-- Catppuccin theme for visual consistency
-- Mouse support for intuitive interactions
+- **12+ curated plugins** via TPM (Tmux Plugin Manager) for extended functionality
+- **tmux2k theme** - Tokyo Night Storm theme with modern aesthetics
+- **FZF integration** - Powerful fuzzy finding for sessions, windows, and URL handling
+- **Session persistence** - Tmux Resurrect & Continuum for automatic session recovery
+- **Floating windows** - Floax plugin for temporary floating pane management
+- **Session explorer** - SessionX for zoxide-powered session jumping and creation
+- **Mouse support** - Full mouse interaction for panes, windows, and copy mode
+- **Advanced status bar** - Dynamic display of session, path, git, battery, CPU, GPU, RAM, languages, and time
+- **Customizable keybindings** - Optimized keyboard shortcuts with sensible defaults
+- **256-color support** - RGB color support for Ghostty and modern terminals
 
 ## 📦 Dependencies & Installation
 
@@ -139,26 +144,26 @@ set -g base-index 1
 # Vi keybindings in copy mode
 setw -g mode-keys vi
 
-# Catppuccin theme
-set -g @plugin 'omerxx/catppuccin-tmux'
+# tmux2k theme with Tokyo Night Storm
+set -g @plugin '2kabhishek/tmux2k'
 ```
 
 ## 📦 Included Plugins
 
-This configuration uses **Tmux Plugin Manager (TPM)** to manage 9+ plugins:
+This configuration uses **Tmux Plugin Manager (TPM)** to manage 11+ plugins:
 
 | Plugin | Purpose |
 |--------|---------|
 | **tpm** | Plugin manager for Tmux |
-| **tmux-sensible** | Common tmux settings |
+| **tmux-sensible** | Common tmux settings and reasonable defaults |
 | **tmux-yank** | Enhanced copy/paste to system clipboard |
 | **tmux-resurrect** | Persist and restore Tmux sessions |
-| **tmux-continuum** | Automatic session resurrection |
+| **tmux-continuum** | Automatic session resurrection on startup |
 | **tmux-thumbs** | Quick link highlighting and selection |
 | **tmux-fzf** | Fuzzy finder integration for Tmux |
 | **tmux-fzf-url** | URL extraction and fuzzy selection |
-| **catppuccin-tmux** | Beautiful Catppuccin theme |
-| **tmux-sessionx** | Enhanced session management |
+| **tmux2k** | Modern Tokyo Night Storm theme |
+| **tmux-sessionx** | Enhanced session management with zoxide |
 | **tmux-floax** | Floating windows support |
 
 ### Plugin Descriptions
@@ -176,8 +181,8 @@ This configuration uses **Tmux Plugin Manager (TPM)** to manage 9+ plugins:
 - Works across SSH and local terminals
 
 **Resurrect & Continuum**
-- Saves and restores session state
-- Automatic backup of open windows and panes
+- Saves and restores session state automatically
+- Preserves open windows, panes, and command history
 
 **Thumbs**
 - Highlight URLs and other searchable text
@@ -187,9 +192,10 @@ This configuration uses **Tmux Plugin Manager (TPM)** to manage 9+ plugins:
 - Fuzzy search for panes, windows, and commands
 - FZF URL - Extract and open URLs with preview
 
-**Catppuccin Theme**
-- Beautiful, cohesive color scheme
-- Matches other terminal applications
+**tmux2k Theme**
+- Modern Tokyo Night Storm color scheme
+- Dynamic status bar with system information
+- Matches Ghostty and Oh My Posh theming
 
 **SessionX**
 - Advanced session navigation and creation
@@ -398,7 +404,7 @@ set -g prefix C-Space    # Use Ctrl+Space instead of Ctrl+A
 
 ### Change Theme
 
-Replace the Catppuccin plugin with another theme:
+Replace the tmux2k plugin with another theme:
 
 ```bash
 set -g @plugin 'dracula/tmux'
@@ -548,7 +554,7 @@ set -g @continuum-save-interval '0'
 - [Tmux GitHub](https://github.com/tmux/tmux/wiki)
 - [TPM (Plugin Manager)](https://github.com/tmux-plugins/tpm)
 - [Tmux Plugins](https://github.com/tmux-plugins)
-- [Catppuccin Theme](https://github.com/catppuccin/tmux)
+- [tmux2k Theme](https://github.com/2kabhishek/tmux2k)
 - [FZF Documentation](https://github.com/junegunn/fzf)
 
 ## 🎯 Tips & Tricks

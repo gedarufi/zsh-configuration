@@ -14,12 +14,14 @@ Oh My Posh provides:
 - **Cross-Platform** - macOS, Linux, Windows compatibility
 
 This custom configuration (`gedarufi.toml`) provides:
-- Tokyo Night color palette
-- OS and system information display
-- Git branch and status indicators
-- Command execution status (success/failure)
-- Transient prompt for clean history
-- Root user detection with lightning bolt indicator
+- **Tokyo Night color palette** - Complete color scheme from Tokyo Night Storm theme
+- **OS and system information** - Displays operating system icon with WSL detection
+- **User session display** - Shows current user with distinctive highlighting
+- **Path display** - Full directory path with folder icons and separators
+- **Command status indicators** - Visual feedback for successful/failed command execution (✓ or ✗)
+- **Root user detection** - Lightning bolt (⚡) indicator when running as root
+- **Transient prompt** - Clean, minimal second-line prompt for reduced history clutter
+- **Multi-block layout** - Two-line prompt structure with left-aligned content
 
 ## 📦 Dependencies & Installation
 
@@ -200,20 +202,19 @@ The theme includes:
    - Current folder path
    - Shortened for readability
 
-3. **Git Segment**
-   - Repository status
-   - Branch name
-   - Modified files indicator
-   - Ahead/behind commits
-
-4. **Command Status Segment**
+3. **Status Indicator Segment**
    - Shows last command exit code
-   - Colored based on success/failure
-   - Lightning bolt for root user
+   - ✓ for success, ✗ for failure
+   - Color-coded (green/red)
+
+4. **Root Indicator Segment**
+   - Lightning bolt (⚡) when running as root
+   - Appears only when needed
 
 5. **Transient Prompt**
    - Simplified arrow prompt for command history
    - Clean looking terminal scrollback
+   - Conditional coloring based on exit code
 
 ## 📥 Installation Steps
 
@@ -367,16 +368,20 @@ template = ">>> "  # Change to your preferred symbol
 The prompt typically displays:
 
 ```
-🍎 macOS  ~/projects/zsh-configuration  main* ✓
+⚡ 🍎 macOS  user  ~/projects/zsh-configuration  ✓
 ❯ 
 ```
 
-Components:
-- 🍎 - OS indicator
-- macOS - Clear OS name
-- ~/projects/zsh-configuration - Current directory
-- main* - Git branch with modified indicator
-- ✓ - Command success indicator
+Components (first line, left-aligned):
+- ⚡ - Cyan indicator (OS identifier)
+- 🍎 - OS icon (macOS, Linux, Windows, etc.)
+- user - Current username in light blue
+- ~/projects/zsh-configuration - Current directory path
+- ✓ - Green checkmark for successful command
+
+Components (second line):
+- ⚡ - Yellow lightning bolt (appears only when running as root)
+- ❯ - Prompt symbol, colored by last command result (magenta for success, red for failure)
 
 ## 🐛 Troubleshooting
 
