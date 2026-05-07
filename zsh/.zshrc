@@ -65,17 +65,17 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 export PATH="/Applications/flameshot.app/Contents/MacOS:$PATH"
-export PATH="/Users/gedarufi/.antigravity/antigravity/bin:$PATH"
-export PATH="$PATH:/Users/gedarufi/.lmstudio/bin"
+export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 export PATH="$HOME/.local/bin:$PATH"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-[ -s "/Users/gedarufi/.bun/_bun" ] && source "/Users/gedarufi/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # pnpm
-export PNPM_HOME="/Users/gedarufi/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -97,4 +97,4 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+_ZO_DOCTOR=0 eval "$(zoxide init --cmd cd zsh)"
